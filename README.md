@@ -1,2 +1,0 @@
-# SolarScanner
-Solar cell calculator
