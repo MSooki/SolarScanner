@@ -1,6 +1,7 @@
 package com.example.solarcalc13
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -38,7 +39,15 @@ class CalculateFragment : Fragment(), View.OnClickListener {
             R.id.view_offers_btn ->
             {
                 if(!TextUtils.isEmpty(amount.text.toString())){
-                    val bundle = bundleOf("amount" to amount.text.toString(), "roof" to ferde_radio_btn.isSelected)
+                    val bundle = bundleOf(
+                        "amount" to amount.text.toString(),
+                        "roof" to ferde_radio_btn.isChecked,
+                        "cserep" to cserep_btn.isChecked,
+                        "pala" to pala_btn.isChecked,
+                        "beton" to beton_btn.isChecked,
+                        "zsin" to zsin_btn.isChecked,
+                        "fem" to fem_btn.isChecked
+                    )
                     navController.navigate(
                         R.id.action_calculateAccurateFragment_to_viewOffersFragment,
                         bundle

@@ -37,6 +37,17 @@
                   android:defaultValue="none"/>
         <argument android:name="roof"
                   android:defaultValue="false"/>
+        <argument android:name="cserep"
+                  android:defaultValue="false"/>
+        <argument android:name="pala"
+                  android:defaultValue="false"/>
+        <argument android:name="zsin"
+                  android:defaultValue="false"/>
+        <argument android:name="beton"
+                  android:defaultValue="false"/>
+        <argument android:name="fem"
+                  android:defaultValue="false"/>
+
 
     </fragment>
 

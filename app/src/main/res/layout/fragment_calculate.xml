@@ -144,13 +144,14 @@
                             android:orientation="horizontal">
 
                         <RadioGroup
+                                android:elevation="32dp"
                                 android:id="@+id/radiogroup2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal" >
 
                             <RadioButton
-                                    android:id="@+id/btn_cserep_radio"
+                                    android:id="@+id/cserep_btn"
                                     android:layout_width="130dp"
                                     android:layout_height="100dp"
                                     android:layout_marginLeft="10dp"
@@ -166,7 +167,7 @@
                                     android:textStyle="bold" />
 
                             <RadioButton
-                                    android:id="@+id/btn_beton_radio"
+                                    android:id="@+id/beton_btn"
                                     android:layout_width="130dp"
                                     android:layout_height="100dp"
                                     android:layout_marginLeft="10dp"
@@ -179,10 +180,10 @@
                                     android:text="Beton cserép"
                                     android:textAppearance="@style/TextAppearance.AppCompat"
                                     android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"/>
 
                             <RadioButton
-                                    android:id="@+id/btn_fem_radio"
+                                    android:id="@+id/fem_btn"
                                     android:layout_width="130dp"
                                     android:layout_height="100dp"
                                     android:layout_marginLeft="10dp"
@@ -195,10 +196,10 @@
                                     android:text="Fémlemez"
                                     android:textAppearance="@style/TextAppearance.AppCompat"
                                     android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"/>
 
                             <RadioButton
-                                    android:id="@+id/btn_zsin_radio"
+                                    android:id="@+id/zsin_btn"
                                     android:layout_width="130dp"
                                     android:layout_height="100dp"
                                     android:layout_marginLeft="10dp"
@@ -214,7 +215,7 @@
                                     android:textStyle="bold"/>
 
                             <RadioButton
-                                    android:id="@+id/btn_pala_radio"
+                                    android:id="@+id/pala_btn"
                                     android:layout_width="130dp"
                                     android:layout_height="100dp"
                                     android:layout_marginLeft="10dp"
