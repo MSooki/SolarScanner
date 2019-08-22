@@ -8,11 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import kotlinx.android.synthetic.main.fragment_view_offers.*
 import java.text.NumberFormat
 
-class ViewOffersFragment : Fragment(), View.OnClickListener {
+class ViewOffersFragment : Fragment(), View.OnClickListener{
 
     var amount:String? = null
+    var priceAsk:String? = null
+    var roofType:String? = null
+    var pottery:String? = null
+    var direction:String? = null
+    var digree:String? = null
 
     var roof:Boolean? = null
     val msg2 = "ferde"
@@ -30,11 +36,37 @@ class ViewOffersFragment : Fragment(), View.OnClickListener {
     var zsin:Boolean? = null
     val msg7 = "zsindely"
 
+    override fun onClick(v: View?) {
+        val email:String = "sooki.mihaly@mszk.bme.hu"
+        val subject:String = "Ajánlat kérés napelemekre"
+        val text:String = "Tisztelt Hölgyem/Uram! Szeretnék ajánlatot kérni Önöktől. Az alábbi paraméterekre kaptam" +
+                " egy $priceAsk forintnyi ajánlatot:" +
+                " havonta sporolnék $amount Ft-nyi villanyt," +
+                " a tetőm típusa $roofType," +
+                " a cserép típusa $pottery," +
+                " a ház tájolása x," +
+                " a tető bezárt szöge x"
+
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            putExtra(Intent.EXTRA_EMAIL,arrayOf<String>(email))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            type = "text/plain"
+        }
+
+        button2.setOnClickListener {
+            startActivity(sendIntent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        roof = arguments!!.getBoolean("roof")
+
         amount = arguments!!.getString("amount")
+
+        roof = arguments!!.getBoolean("roof")
+
         pala = arguments!!.getBoolean("pala")
         cserep = arguments!!.getBoolean("cserep")
         fem = arguments!!.getBoolean("fem")
@@ -59,47 +91,33 @@ class ViewOffersFragment : Fragment(), View.OnClickListener {
         val priceSkySystem = ((((price/38)*12)/1000)*500000)
 
         view.findViewById<Button>(R.id.button2).text = formatValue(priceSkySystem)
+        priceAsk = priceSkySystem.toString()
 
         if(roof == true) {
-            view.findViewById<Button>(R.id.button3).text = msg2
+            roofType = msg2
         }
         else {
-            view.findViewById<Button>(R.id.button3).text = msg3
+            roofType = msg3
         }
         if(pala == true){
-            view.findViewById<Button>(R.id.button4).text = msg4
+            pottery = msg4
         }
         if(cserep == true){
-            view.findViewById<Button>(R.id.button4).text = msg5
+            pottery = msg5
         }
         if(fem == true){
-            view.findViewById<Button>(R.id.button4).text = msg6
+            pottery = msg6
         }
         if(zsin == true){
-            view.findViewById<Button>(R.id.button4).text = msg7
+            pottery = msg7
         }
-
     }
 
-    private val sendIntent: Intent = Intent().apply {
-        action = Intent.ACTION_SEND
-        putExtra(Intent.EXTRA_TEXT, "Tisztelt Hölgyem/Uram, szeretnék ajánlatot kérni Önöktől forintot sporolnék havontaa")
-        putExtra(Intent.EXTRA_EMAIL, "sooki.mihaly@mszk.bme.hu")
-        putExtra(Intent.EXTRA_SUBJECT, "Ajánlat kérés SolarScanner applikáción keresztül napelemekre")
-        putExtra(Intent.EXTRA_USER, "user")
-        putExtra(Intent.EXTRA_CC, "cc")
-        type = "text/plain"
-    }
-
+    /*
     private fun sendEmail(){
         startActivity(sendIntent)
     }
-
-    override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.button2 -> sendEmail()
-        }
-    }
+    */
 
     /**
      * Adding 1234321 as double, this method will give back "1.234.321 HUF" in string

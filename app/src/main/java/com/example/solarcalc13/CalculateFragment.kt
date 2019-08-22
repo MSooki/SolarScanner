@@ -16,9 +16,10 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_calculate.*
 
-class CalculateFragment : Fragment(), View.OnClickListener {
+class CalculateFragment : Fragment(), View.OnClickListener{
 
     lateinit var navController: NavController
+    lateinit var emailText:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,11 @@ class CalculateFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.view_offers_btn).setOnClickListener(this)
+    }
+
+    fun getAmount():String {
+        emailText = amount.text.toString()
+        return emailText
     }
 
     override fun onClick(v: View?) {

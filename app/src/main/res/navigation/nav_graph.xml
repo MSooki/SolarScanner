@@ -35,8 +35,13 @@
 
         <argument android:name="amount"
                   android:defaultValue="none"/>
+
+        <argument android:name="price"
+                  android:defaultValue="none"/>
+
         <argument android:name="roof"
                   android:defaultValue="false"/>
+
         <argument android:name="cserep"
                   android:defaultValue="false"/>
         <argument android:name="pala"
@@ -47,6 +52,8 @@
                   android:defaultValue="false"/>
         <argument android:name="fem"
                   android:defaultValue="false"/>
+        <argument android:name="emailText"
+                  android:defaultValue="none"/>
 
 
     </fragment>
