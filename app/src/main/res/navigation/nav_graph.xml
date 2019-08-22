@@ -55,6 +55,9 @@
         <argument android:name="emailText"
                   android:defaultValue="none"/>
 
+        <argument android:name="angle"
+                  android:defaultValue="none"/>
+
 
     </fragment>
 

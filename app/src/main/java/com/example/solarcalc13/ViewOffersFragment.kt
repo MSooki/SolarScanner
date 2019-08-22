@@ -13,39 +13,31 @@ import java.text.NumberFormat
 
 class ViewOffersFragment : Fragment(), View.OnClickListener{
 
-    var amount:String? = null
-    var priceAsk:String? = null
-    var roofType:String? = null
-    var pottery:String? = null
-    var direction:String? = null
-    var digree:String? = null
+    private var amount:String? = null
+    private var priceAsk:String? = null
+    private var roofType:String? = null
+    private var pottery:String? = null
+    private var direction:String? = null
+    private var angle:String? = null
 
-    var roof:Boolean? = null
-    val msg2 = "ferde"
-    val msg3 = "lapos"
+    private var roof:Boolean? = null
 
-    var pala:Boolean? = null
-    val msg4 = "pala"
-
-    var cserep:Boolean? = null
-    val msg5 = "égetett cserép"
-
-    var fem:Boolean? = null
-    val msg6 = "fém"
-
-    var zsin:Boolean? = null
-    val msg7 = "zsindely"
+    private var pala:Boolean? = null
+    private var cserep:Boolean? = null
+    private var fem:Boolean? = null
+    private var zsin:Boolean? = null
+    private var beton:Boolean? = null
 
     override fun onClick(v: View?) {
         val email:String = "sooki.mihaly@mszk.bme.hu"
         val subject:String = "Ajánlat kérés napelemekre"
         val text:String = "Tisztelt Hölgyem/Uram! Szeretnék ajánlatot kérni Önöktől. Az alábbi paraméterekre kaptam" +
-                " egy $priceAsk forintnyi ajánlatot:" +
-                " havonta sporolnék $amount Ft-nyi villanyt," +
+                " egy $priceAsk-os ajánlatot:" +
+                " havonta sporolnék $amount Ft elektromos áramot," +
                 " a tetőm típusa $roofType," +
                 " a cserép típusa $pottery," +
                 " a ház tájolása x," +
-                " a tető bezárt szöge x"
+                " a tető bezárt szöge $angle"
 
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
@@ -71,6 +63,9 @@ class ViewOffersFragment : Fragment(), View.OnClickListener{
         cserep = arguments!!.getBoolean("cserep")
         fem = arguments!!.getBoolean("fem")
         zsin = arguments!!.getBoolean("zsin")
+        beton = arguments!!.getBoolean("beton")
+
+        angle = arguments!!.getString("angle")
     }
 
     override fun onCreateView(
@@ -91,25 +86,28 @@ class ViewOffersFragment : Fragment(), View.OnClickListener{
         val priceSkySystem = ((((price/38)*12)/1000)*500000)
 
         view.findViewById<Button>(R.id.button2).text = formatValue(priceSkySystem)
-        priceAsk = priceSkySystem.toString()
+        priceAsk = formatValue(priceSkySystem)
 
         if(roof == true) {
-            roofType = msg2
+            roofType = "ferde"
         }
         else {
-            roofType = msg3
+            roofType = "lapos"
         }
         if(pala == true){
-            pottery = msg4
+            pottery = "pala"
         }
         if(cserep == true){
-            pottery = msg5
+            pottery = "cserép"
         }
         if(fem == true){
-            pottery = msg6
+            pottery = "fém"
         }
         if(zsin == true){
-            pottery = msg7
+            pottery = "zsindely"
+        }
+        if(beton == true){
+            pottery = "beton"
         }
     }
 

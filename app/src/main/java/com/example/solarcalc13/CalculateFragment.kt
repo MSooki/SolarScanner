@@ -52,7 +52,8 @@ class CalculateFragment : Fragment(), View.OnClickListener{
                         "pala" to pala_btn.isChecked,
                         "beton" to beton_btn.isChecked,
                         "zsin" to zsin_btn.isChecked,
-                        "fem" to fem_btn.isChecked
+                        "fem" to fem_btn.isChecked,
+                        "angle" to editText_angle.text.toString()
                     )
                     navController.navigate(
                         R.id.action_calculateAccurateFragment_to_viewOffersFragment,
